@@ -1,9 +1,9 @@
-// Vercel serverless function: save as /api/chat.js in a NEW small repo (not your GitHub Pages repo).
+// Vercel serverless function: /api/chat.js in a NEW small repo 
 // Env vars to set in Vercel: ANTHROPIC_API_KEY
 // Keeps your API key off the browser, limits abuse, and grounds answers in YOUR facts only.
 
 const ALLOWED_ORIGINS = ["https://sunainashaik01.github.io", "http://localhost:5500", "http://127.0.0.1:5500"];
-const MODEL = "claude-haiku-5-5"; // fast + cheap; swap for claude-sonnet-5-5 for richer answers
+const MODEL = "claude-haiku-5-5"; // 
 
 // ---------- EDIT THIS: everything the bot is allowed to know ----------
 const KNOWLEDGE = `
@@ -67,7 +67,10 @@ module.exports = async (req, res) => {
   if (recent.length >= LIMIT) return res.status(429).json({ error: "Too many questions. Please try again in a few minutes." });
   hits.set(ip, [...recent, now]);
 
-  const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
+  if (!process.env.ANTHROPIC_API_KEY) return res.status(500).json({ error: "The assistant is unavailable right now.", detail: "ANTHROPIC_API_KEY is not set on this deployment" });
+
+  let body = {};
+  try { body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {}; } catch (e) { return res.status(400).json({ error: "Bad request." }); }
   const mode = body.mode === "interview" ? "interview" : "ask";
   let msgs = (Array.isArray(body.messages) ? body.messages : [])
     .filter((m) => (m.role === "user" || m.role === "assistant") && typeof m.content === "string")
@@ -93,6 +96,6 @@ module.exports = async (req, res) => {
     return res.status(200).json({ reply });
   } catch (e) {
     console.error("chat error:", e.message);
-    return res.status(500).json({ error: "The assistant is unavailable right now." });
+    return res.status(500).json({ error: "The assistant is unavailable right now.", detail: e.message }); // DEBUG: remove detail once working
   }
 };
