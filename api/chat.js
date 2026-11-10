@@ -88,10 +88,11 @@ module.exports = async (req, res) => {
       }),
     });
     const data = await r.json();
-    if (!r.ok) throw new Error(data?.error?.message || "Upstream error");
+    if (!r.ok) throw new Error(`Anthropic ${r.status}: ${data?.error?.message || "Upstream error"}`);
     const reply = (data.content || []).map((b) => b.text || "").join("").trim();
     return res.status(200).json({ reply });
   } catch (e) {
+    console.error("chat error:", e.message);
     return res.status(500).json({ error: "The assistant is unavailable right now." });
   }
 };
