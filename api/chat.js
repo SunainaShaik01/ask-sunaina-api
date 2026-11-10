@@ -67,7 +67,7 @@ module.exports = async (req, res) => {
   if (recent.length >= LIMIT) return res.status(429).json({ error: "Too many questions. Please try again in a few minutes." });
   hits.set(ip, [...recent, now]);
 
-  if (!process.env.ANTHROPIC_API_KEY) return res.status(500).json({ error: "The assistant is unavailable right now.", detail: "ANTHROPIC_API_KEY is not set on this deployment" });
+  if (!process.env.ANTHROPIC_API_KEY) return res.status(500).json({ error: "The assistant is unavailable right now." });
 
   let body = {};
   try { body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {}; } catch (e) { return res.status(400).json({ error: "Bad request." }); }
@@ -96,6 +96,6 @@ module.exports = async (req, res) => {
     return res.status(200).json({ reply });
   } catch (e) {
     console.error("chat error:", e.message);
-    return res.status(500).json({ error: "The assistant is unavailable right now.", detail: e.message }); // DEBUG: remove detail once working
+    return res.status(500).json({ error: "The assistant is unavailable right now." });
   }
 };
