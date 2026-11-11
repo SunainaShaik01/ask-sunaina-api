@@ -5,18 +5,32 @@
 const ALLOWED_ORIGINS = ["https://sunainashaik01.github.io", "http://localhost:5500", "http://127.0.0.1:5500"];
 const MODEL = "claude-haiku-5-5"; // 
 
-// ---------- EDIT THIS: everything the bot is allowed to know ----------
+// ---------- everything the bot is allowed to know ----------
 const KNOWLEDGE = `
 NAME: Sunaina Shaik. Based in Kansas City, MO.
 CONTACT: Sunainashaik01@gmail.com | +1 (248) 997-0244 | linkedin.com/in/sunainashaik
 EDUCATION: Bachelor's in Computer Science, University of Missouri-Kansas City (graduated December 2025). Also did graduate-level coursework projects (Find a Friend, Arc Force One below).
 LOOKING FOR: Entry-level software developer roles. On an F-1 visa; STEM OPT begins January 2027; will need H-1B sponsorship.
 
-CURRENT WORK (Martinrea International, automotive manufacturing): Quality Engineer, Aug 2025 - present. Before that, Quality Systems Intern there, May 2024 - Dec 2024. Sits on a small team of three developers under managers, working directly with quality engineers, production supervisors, and the quality manager. Work is a mix of software development, automation, testing, and troubleshooting. Requirements come from real problems users describe, not from product managers: she sits with them, builds a prototype in Power Apps, collects feedback, iterates, gets supervisor approval, then promotes to production.
+CURRENT WORK (Martinrea International, automotive manufacturing): Quality Engineer, Aug 2025 - present. Before that, Quality Systems Intern there, May 2024 - Dec 2024.working directly with quality engineers, production supervisors, and the quality manager. Work is a mix of software development, automation, testing, and troubleshooting. Requirements come from real problems users describe, not from product managers: she sits with them, builds a prototype in Power Apps, collects feedback, iterates, gets supervisor approval, then promotes to production.
 Tools at work: Microsoft Power Apps, Power Automate, SharePoint, Copilot Studio, GageTrak calibration database, GR&R statistical analysis, 3x5 Why root cause analysis.
 Other roles: Full-Stack Developer apprenticeship at Commerce Bank, Jan-May 2025 (BankEase).
 
 SKILLS: Java, Python, PHP, JavaScript, HTML/CSS, React, Spring Boot, SQL, MySQL, PostgreSQL, Docker, Flyway, AWS EC2, Spring Security + JWT, Swagger, Postman, OpenAI API (embeddings), Microsoft Copilot Studio, Power Platform. Certifications: Azure AI, Power Platform.
+
+WEAKNESS(use for interview answers; facts only)
+1. Spending too much time on details
+"Sometimes I spend more time than necessary trying to make a solution perfect. I've realized that while quality is important, balancing quality with efficiency is equally important. I've been improving by setting time limits, prioritizing requirements, and focusing on delivering a working solution before optimizing it."
+2. Taking on too much at once
+"Sometimes I get excited about a project and take on multiple tasks because I want to contribute as much as possible. I've been working on improving my prioritization by breaking work into smaller tasks, understanding deadlines, and communicating my progress more effectively."
+
+STRENGTHS(use for interview answers; facts only)
+1.Quick learner and adaptable
+"One of my biggest strengths is that I'm a quick learner. I'm comfortable working with new technologies and tools, and I enjoy stepping outside my comfort zone. For example, throughout my academic projects and internships, I've had opportunities to work with different technologies, and I've been able to adapt and apply them effectively."
+2. Problem-solving skills
+"I'm good at breaking down complex problems into smaller, manageable pieces. Rather than jumping straight into a solution, I try to understand the root cause, explore different approaches, and choose the most effective one. This helps me write better solutions and troubleshoot issues efficiently."
+3. Ownership and accountability
+"I take ownership of the work assigned to me. If I commit to something, I make sure I follow through. If I encounter a challenge, I don't immediately give up. I research, troubleshoot, and ask for guidance when necessary to make sure I deliver the expected results."
 
 PROJECTS
 - BankEase budgeting app (Commerce Bank apprenticeship): Java 17 / Spring Boot 3.3 REST API + React frontend; accounts, transactions, expenses, debts, budgets. Spring Security + JWT with role-based authorization (user vs admin). PostgreSQL schema with Flyway migrations; PostgreSQL + pgAdmin in Docker Compose. Documented with Swagger UI and a Postman collection.
